@@ -12,10 +12,10 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(Express.static('public'));
 app.use(bodyParser.json());
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/user', userRouter);
-app.use('/trip', tripRouter);
 
 app.listen(2000, function (a) {
   console.log("Listening to port 2000");
 });
+module.exports = app;
