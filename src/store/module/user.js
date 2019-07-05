@@ -1,3 +1,4 @@
+import * as types from '../mutations-types'
 export default {
   state: {
     user:null,
@@ -6,13 +7,13 @@ export default {
     user: state => state.user
   },
   mutations: {
-    setUser (state,data) {
+    [ types.SET_USER ] (state,data) {
       state.user = data
     }
   },
   actions: {
     serUser (store ,data) {
-      store.commit(setUser,data)
+      store.commit([ types.SET_USER ],data)
     }
   }
 

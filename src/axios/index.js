@@ -10,7 +10,7 @@ Vue.prototype.$http = axios; //表示跨域请求时是否用凭证
 //请求拦截器
 axios.interceptors.request.use(
   config => {
-    config.header['Content-Type'] = 'application/x-www-form-urlencoded'
+    config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     return config
   },
   error => {
@@ -26,6 +26,32 @@ axios.interceptors.request.use(
     Toast.failed('响应过程出错')
     return Promise.reject(error)
   })
+  var request = (options) => {
+    // 每次请求传入当前登录用户id
+    // if (tmpTrip.user) {
+    //   if (options.body) {
+    //     options.body.userId = tmpTrip.user.userId
+    //   }
+    //   if (options.params) {
+    //     options.params.userId = tmpTrip.user.userId
+    //   }
+    // }
+    // 表单传值参数格式化
+    return axios.request({
+      url: `http://localhost:3000${options.url}`,
+      method: options.method,
+      data: options.body,
+      params: options.params
+    }).then(response => {
+      return response
+    }, err => {
+      Toast.failed(err.messge)
+      throw err
+    }).catch((error) => {
+      Toast.failed('请求失败')
+      throw error
+    })
+  }
   // http请求方式
 export const http = {}
 const methods = ['get', 'post', 'put', 'delete']

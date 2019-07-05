@@ -8,6 +8,7 @@ var userRouter = require('./routes/user')
 app.use(cors({
   origin:"http://localhost:8080"
 }))
+app.use(Express.json());
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(Express.static('public'));
 app.use(bodyParser.json());
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 // app.use('/', indexRouter);
 app.use('/user', userRouter);
 
-app.listen(2000, function (a) {
-  console.log("Listening to port 2000");
+app.listen(3000, function (a) {
+  console.log("Listening to port 3000");
 });
 module.exports = app;

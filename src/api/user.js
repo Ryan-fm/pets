@@ -1,5 +1,5 @@
 export function getLogin (query) {
-  return $http.post({
+  return this.$http.post({
     url: '/user',
     method: 'post',
     params: query,

@@ -6,21 +6,21 @@
      <div class="md-example-child md-example-child-input-item-1">
       <md-field>
         <md-input-item
-          ref="name"
+          v-model="user.name"
           title="用户名"
           placeholder="用户名"
           is-title-latent
           clearable
         ></md-input-item>
         <md-input-item
-          ref="password"
+          v-model="user.password"
           title="密码"
           placeholder="密码"
           is-title-latent
           clearable
           ></md-input-item>
       </md-field>
-      <md-button type="primary" round>登录</md-button>
+      <md-button type="primary" round @click="handleClick">登录</md-button>
       <p style="margin-top:20px">密码忘记了？<span class="pass-back">请找回密码</span></p>
       <!-- 微信登录 -->
       <div style="margin-top:30px">
@@ -37,25 +37,38 @@
   </div>  
 </template>
 <script>
+import { mapActions } from 'vuex'
 import {getLogin} from '@/api/user'
+import { Toast } from 'mand-mobile'
 export default {
   name: 'Login',
   data () {
     return {
-      name:'',
-      password:'',
+      user:{
+        name:'',
+        password:'',
+      }
       }
   },
   mounted () {
   },
   methods: {
+    ...mapActions(['setUser']),
     handleClick(){
       let param = {
-        userName :this.name,
-        password : this.password
+        uName :this.user.name,
+        pWord :this.user.password
       }
-      getLogin(param).then(response => {
-        console.log(res.data)
+      this.$http.post('/user', param).then(res => {
+        if(res.data.code== 200){
+            let User = JSON.stringify(res.data.data);
+            //登录信息存到本地
+            localStorage.setItem('user',User);
+            //存到vuex
+            this.setUser(this.user);
+            Toast.succeed(`欢迎回来, ${this.user.name}`,1500)
+            this.$router.push({path:'/'});       
+         }
       })
     },
   }
