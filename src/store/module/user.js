@@ -12,8 +12,8 @@ export default {
     }
   },
   actions: {
-    serUser (store ,data) {
-      store.commit([ types.SET_USER ],data)
+    setUser (store ,data) {
+      store.commit(types.SET_USER ,data)
     }
   }
 

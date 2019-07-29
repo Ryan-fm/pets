@@ -1,7 +1,7 @@
 const tripUser = [
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import('@/view/login/login'),
     meta: {
       title: '登录'

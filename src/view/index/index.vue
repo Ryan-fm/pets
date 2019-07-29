@@ -9,9 +9,10 @@
 <script>
 import headContact from "./header"
 import headContent from "./content"
+
 export default {
   name: 'index',
-  components:{headContact,headContent},
+  components:{headContact,headContent,},
   data () {
     return {
     

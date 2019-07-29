@@ -1,17 +1,21 @@
 <template>
   <div id="app">
     <router-view/>
+    <bottom-bar></bottom-bar>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import bottomBar  from './components/bottom'
 export default {
   name: 'App',
+  components:{
+    bottomBar
+  },
   mounted () {
     // 验证本地是否已经登录过
     let tmpUser = localStorage.getItem('user')
-    console.log(tmpUser);
     if (tmpUser) {
       this.setUser(JSON.parse(tmpUser))
     } else {
@@ -19,7 +23,7 @@ export default {
     }
   },
   methods: {
-     ...mapActions(['setUser', 'setUserData'])
+     ...mapActions(['setUser'])
   }
 }
 </script>

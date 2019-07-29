@@ -1,69 +1,78 @@
 <template>
   <div class="content">
-    <!-- 顶部的信息栏 -->
-      <h6 class="title-set">别去笼子，让毛孩子住我家</h6>
-      <p class="label-set">温馨舒适的环境，开放宽敞的活动空间。</p>
-       <el-carousel :interval="4000" type="card" height="200px">
-        <el-carousel-item v-for="(item,key) in showTimeS" :key="key">
-          <img :src="item.imgurl" alt="" style="height:150px;width:100%">
-            <el-row class="label-detail">
-              <el-col :span="6">
-                   <img :src="item.userUrl" style="height:30px;width:30px;border-radius:50%;padding:10px 0px 10px">
-              </el-col>
-              <el-col :span="11">
-                  <span style="" class="detail-home">家庭</span>
-                  <span class="home-detail">家有芒果</span>
-                  <p>
-                     <img src="../../../static/img/location.png" alt="#" style="height:10px">
-                     广州
-                  </p>
-              </el-col>
-              <el-col :span="7">
-                <span class="detail-price">￥50</span>
-                晚/起
-              </el-col>
-            </el-row>
-        </el-carousel-item>
-      </el-carousel>
+    <!-- 信息栏 -->
+    <div class="message">
+      <flexbox>
+        <flexbox-item>
+          <div class="flex-demo">
+             <span>申请家庭</span>
+             <img src="../../../static/img/family.png" alt="">
+          </div>         
+        </flexbox-item>
+        <flexbox-item>
+          <div class="flex-demo">
+             <span>宠物指南</span>
+             <img src="../../../static/img/guide.png" alt="">
+          </div>
+        </flexbox-item>
+        <flexbox-item>
+          <div class="flex-demo">
+             <span>保障指南</span>
+             <img src="../../../static/img/protect.png" alt="">
+          </div>
+        </flexbox-item>
+    </flexbox>
+    </div>
+    <!-- 轮播部分 -->
+    <div style="margin-top:30px">
+      <swiper loop auto :list="imgs" :index="imgs" @on-index-change="onIndexChange"></swiper>
+    </div>
   </div>
 </template>
 
 <script>
+import { Flexbox, FlexboxItem,Swiper } from 'vux'
+const showTimeS=[
+          {
+            img:"http://viptail.image.alimmdn.com/files/official_web/img/cq001-f.jpg",
+            title:'小狗之家',
+          },
+          {
+            img:"http://viptail.image.alimmdn.com/files/official_web/img/cq001-f.jpg",
+            title:'小狗之家2',
+          },
+       ];
+const urlList = showTimeS.map((item, index) => ({
+  url: 'http://www.baidu.com',
+  img: item.img,
+  title: item.title
+}))
 export default {
   name: 'content',
+  components:{Flexbox, FlexboxItem,Swiper},
   data () {
     return {
-       showTimeS:[
-         {
-           imgurl:"http://viptail.image.alimmdn.com/files/official_web/img/cq001-f.jpg",
-           name:'鸡血小皇后的家',
-           userUrl:'http://viptail.image.alimmdn.com/files/official_web/img/cq001-u.jpg',
-           city:'重庆',
-           price:'40'
-         },
-         {
-           imgurl:"http://viptail.image.alimmdn.com/files/official_web/img/cq001-f.jpg",
-           name:'鸡血小皇后的家',
-           userUrl:'http://viptail.image.alimmdn.com/files/official_web/img/cq001-u.jpg',
-           city:'重庆',
-           price:'40'
-         },
-         {
-           imgurl:"http://viptail.image.alimmdn.com/files/official_web/img/cq001-f.jpg",
-           name:'鸡血小皇后的家',
-           userUrl:'http://viptail.image.alimmdn.com/files/official_web/img/cq001-u.jpg',
-           city:'重庆',
-           price:'40'
-         },
-       ]
+       imgs:urlList,
+       
     }
   },
+  methods:{
+    onIndexChange() {
+
+    },
+  }
 }
 </script>
 
 <style scoped lang="scss">
+  .message .flex-demo{
+    text-align: center
+  }
+  .message img{
+    height: 30px;
+    margin-left: 5px;
+  }
   .content{
-    height:1000px;
     margin-top:20px
   }
   .title-set{

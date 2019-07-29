@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import User from './module/user'
 import Pets from './module/pet'
+import { Toast } from 'mand-mobile'
 Vue.use(Router)
 
 const commonRoutes = [

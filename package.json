@@ -17,7 +17,9 @@
     "qs": "^6.7.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "vux": "^2.9.4",
+    "vux-loader": "^1.2.9"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -46,6 +48,8 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -67,7 +71,8 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "yaml-loader": "^0.5.0"
   },
   "engines": {
     "node": ">= 6.0.0",
