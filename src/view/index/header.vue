@@ -63,7 +63,6 @@ export default {
     color: $font-color;
     background-color: $topic-color;
     height: 20px;
-    width: 60px;
     float:right;
     font-size: $font-size;
     margin-right: 20px;

@@ -10,8 +10,8 @@ var data = {
 var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: '',
-  database: 'pets'
+  password: '666666',
+  database: 'pet'
 });
 
 router.post('/',function (req,res,next) {
