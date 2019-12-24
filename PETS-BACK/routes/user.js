@@ -10,7 +10,7 @@ var data = {
 var pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: '666666',
+  password: 'root',
   database: 'pet'
 });
 
@@ -23,6 +23,7 @@ router.post('/',function (req,res,next) {
        data.code = 500
        data.msg =err
      };
+     console.log(result);
      if (result[0].passWord === passWord) {
         selectUser(result[0].userId)
      }else{
@@ -53,23 +54,24 @@ router.post('/',function (req,res,next) {
 })
 // 用户注册接口
 router.post('/add',function (req,res,next) {
-  let userName = req.body.uName
-  let password = req.body.pWord
+  let userName = req.body.name
+  let password = req.body.passWord
   let phone = req.body.phone
-  let address = req.body.address
-  let sex = req.body.sex
-  let img = req.body.img
   //判断手机号码的唯一性 如果手机号码相同，就返回错误信息
-  let sql = 'SELECT * FROM '
-  let sql = 'insert into user_info(name,phone,address,sex,img) values(?,?,?,?,?,?)'
-  pool.query(sql,[userName,password,phone,address,sex,img],(err,res)=>{
+  let sql = 'insert into user(userName,password,phone) values(?,?,?)'
+  pool.query(sql,[userName,password,phone],(err,result,fields)=>{
     if(err) {
       data.code = 500
       data.msg = err
     };
-    if (result[0].passWord === passWord) {
-       
-    }
+    if (result){
+      data.code = 200
+      data.msg = 'sucess'
+      res.statusCode = 200;
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      res.setHeader('Content-Type', 'application/json');
+      res.json(data);
+    }    
   })  
 })
 module.exports = router;

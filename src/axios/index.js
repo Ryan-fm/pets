@@ -48,6 +48,7 @@ axios.interceptors.request.use(
       Toast.failed(err.messge)
       throw err
     }).catch((error) => {
+      console.log(axios.request);
       Toast.failed('请求失败')
       throw error
     })
@@ -83,3 +84,4 @@ export default function plugin (Vue) {
     }
   })
 }
+

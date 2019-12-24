@@ -2,24 +2,31 @@
   <div id="app">
     <view-box ref="viewBox">
       <router-view/>
-      <bottom-bar></bottom-bar>
+      <bottom-bar v-if="isLogin"></bottom-bar>
     </view-box >
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import { ViewBox } from 'vux'
 import bottomBar  from './components/bottom'
 export default {
   name: 'App',
   components:{
-    bottomBar
+    bottomBar,ViewBox
+  },
+  data() {
+    return {
+      isLogin:false
+    }
   },
   mounted () {
     // 验证本地是否已经登录过
-    let tmpUser = localStorage.getItem('user')
+    let tmpUser = this.getDate('user')
     if (tmpUser) {
-      this.setUser(JSON.parse(tmpUser))
+      this.isLogin = true
+      this.setUser(tmpUser)
     } else {
       this.$router.push({ path: '/login' })
     }

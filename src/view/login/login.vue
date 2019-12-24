@@ -18,6 +18,7 @@
           placeholder="密码"
           is-title-latent
           clearable
+          type="password"
           ></md-input-item>
       </md-field>
       <md-button type="primary" round @click="handleClick">登录</md-button>
@@ -31,7 +32,7 @@
       </div>
       <!-- 跳转注册页面 -->
      <div class="bottom-set">
-       <p style="text-align:center">还没有账号？<span class="pass-back">注册</span></p>
+       <p style="text-align:center">还没有账号？<span class="pass-back" @click="goRegister">注册</span></p>
      </div>
     </div>
   </div>  
@@ -63,7 +64,7 @@ export default {
         if(res.data.code== 200){
             let User = JSON.stringify(res.data.data);
             //登录信息存到本地
-            localStorage.setItem('user',User);
+            this.setData('user',User);
             //存到vuex
             this.setUser(this.user);
             Toast.succeed(`欢迎回来, ${this.user.name}`,1500)
@@ -71,6 +72,11 @@ export default {
          }
       })
     },
+    // 跳转到注册页面
+    goRegister() {
+      console.log(111)
+      this.$router.push({path:'/register'});  
+    }
   }
 }
 </script>
