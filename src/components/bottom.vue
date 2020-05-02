@@ -1,6 +1,6 @@
 <template>
  <!-- 底部栏 -->
-    <tabbar>
+    <tabbar class="bar">
       <tabbar-item selected link="/index">
         <img slot="icon" src="../../static/img/index.png">
         <span slot="label">首页</span>
@@ -27,7 +27,9 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-  
+<style lang="scss" >
+   .weui-tab__panel{
+      overflow: hidden !important;
+  }
 </style>
 

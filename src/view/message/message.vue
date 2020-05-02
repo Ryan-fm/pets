@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-      2
+      11
   </div>
 </template>
 

@@ -49,7 +49,7 @@ axios.interceptors.request.use(
       throw err
     }).catch((error) => {
       console.log(axios.request);
-      Toast.failed('请求失败')
+      Toast.failed('请求失败1')
       throw error
     })
   }

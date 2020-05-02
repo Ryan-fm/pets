@@ -1,12 +1,19 @@
 <template>
   <div class="notice">
-      111
+      <my-card></my-card>
   </div>
 </template>
 
 <script>
+import myCard from './components/card.vue';
 export default {
-    name:'notice'
+    name:'notice',
+    components:{myCard},
+    data() {
+      return {
+        
+      }
+    },
 }
 </script>
 
